@@ -1,0 +1,350 @@
+## And_Operator.sql
+
+-- ==========================================
+-- File Name : And_Operator.sql
+-- Topic     : AND Operator in SQL
+-- Purpose   : To combine multiple conditions
+-- ==========================================
+
+-- Step 1: Create Student Table
+
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50)
+);
+
+-- Step 2: Insert Sample Records
+
+INSERT INTO Student VALUES (1, 'Jay', 20, 'Computer');
+INSERT INTO Student VALUES (2, 'Rahul', 21, 'IT');
+INSERT INTO Student VALUES (3, 'Priya', 19, 'Computer');
+INSERT INTO Student VALUES (4, 'Sneha', 22, 'Mechanical');
+
+-- Step 3: Display All Records
+
+SELECT * FROM Student;
+
+-- Step 4: Retrieve Students from Computer Department
+-- and Age Greater Than 18
+
+SELECT *
+FROM Student
+WHERE Department = 'Computer'
+AND Age > 18;
+
+-- Expected Output
+
+/*
++-----------+-------+-----+------------+
+| StudentID | Name  | Age | Department |
++-----------+-------+-----+------------+
+| 1         | Jay   | 20  | Computer   |
+| 3         | Priya | 19  | Computer   |
++-----------+-------+-----+------------+
+*/
+
+
+
+
+
+## Or_Operator.sql
+
+-- ==========================================
+-- File Name : Or_Operator.sql
+-- Topic     : OR Operator in SQL
+-- Purpose   : To retrieve records that satisfy
+--             at least one condition
+-- ==========================================
+
+-- Step 1: Create Student Table
+
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50)
+);
+
+-- Step 2: Insert Sample Records
+
+INSERT INTO Student VALUES (1, 'Jay', 20, 'Computer');
+INSERT INTO Student VALUES (2, 'Rahul', 21, 'IT');
+INSERT INTO Student VALUES (3, 'Priya', 19, 'Computer');
+INSERT INTO Student VALUES (4, 'Sneha', 22, 'Mechanical');
+
+-- Step 3: Display All Records
+
+SELECT * FROM Student;
+
+-- Step 4: Retrieve Students from Computer
+-- or IT Department
+
+SELECT *
+FROM Student
+WHERE Department = 'Computer'
+OR Department = 'IT';
+
+-- Expected Output
+
+/*
++-----------+--------+-----+------------+
+| StudentID | Name   | Age | Department |
++-----------+--------+-----+------------+
+| 1         | Jay    | 20  | Computer   |
+| 2         | Rahul  | 21  | IT         |
+| 3         | Priya  | 19  | Computer   |
++-----------+--------+-----+------------+
+*/
+
+-- ==========================================
+-- File Name : Between.sql
+-- Topic     : BETWEEN Operator in SQL
+-- Purpose   : To retrieve records within
+--             a specified range
+-- ==========================================
+
+-- Step 1: Create Student Table
+
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50)
+);
+
+-- Step 2: Insert Sample Records
+
+INSERT INTO Student VALUES (1, 'Jay', 20, 'Computer');
+INSERT INTO Student VALUES (2, 'Rahul', 21, 'IT');
+INSERT INTO Student VALUES (3, 'Priya', 19, 'Computer');
+INSERT INTO Student VALUES (4, 'Sneha', 22, 'Mechanical');
+INSERT INTO Student VALUES (5, 'Amit', 18, 'IT');
+
+-- Step 3: Display All Records
+
+SELECT * FROM Student;
+
+-- Step 4: Retrieve Students
+-- whose Age is between 19 and 21
+
+SELECT *
+FROM Student
+WHERE Age BETWEEN 19 AND 21;
+
+-- Expected Output
+
+/*
++-----------+--------+-----+------------+
+| StudentID | Name   | Age | Department |
++-----------+--------+-----+------------+
+| 1         | Jay    | 20  | Computer   |
+| 2         | Rahul  | 21  | IT         |
+| 3         | Priya  | 19  | Computer   |
++-----------+--------+-----+------------+
+*/
+
+
+
+-- ==========================================
+-- File Name : Distinct.sql
+-- Topic     : DISTINCT Keyword in SQL
+-- Purpose   : To display unique values and
+--             remove duplicate records
+-- ==========================================
+
+-- Step 1: Create Student Table
+
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50)
+);
+
+-- Step 2: Insert Sample Records
+
+INSERT INTO Student VALUES (1, 'Jay', 20, 'Computer');
+INSERT INTO Student VALUES (2, 'Rahul', 21, 'IT');
+INSERT INTO Student VALUES (3, 'Priya', 19, 'Computer');
+INSERT INTO Student VALUES (4, 'Sneha', 22, 'Mechanical');
+INSERT INTO Student VALUES (5, 'Amit', 20, 'IT');
+
+-- Step 3: Display All Records
+
+SELECT * FROM Student;
+
+-- Step 4: Display Unique Departments
+
+SELECT DISTINCT Department
+FROM Student;
+
+-- Expected Output
+
+/*
++------------+
+| Department |
++------------+
+| Computer   |
+| IT         |
+| Mechanical |
++------------+
+*/
+
+
+
+
+
+-- Example Result:
+
+-- Without DISTINCT:
+
+SELECT Department FROM Student;
+
+Output:
+
+Computer
+IT
+Computer
+Mechanical
+IT
+
+SELECT DISTINCT Department FROM Student;
+
+Output:
+
+Computer
+IT
+Mechanical
+
+
+-- ==========================================
+-- File Name : Select.sql
+-- Topic     : SELECT Command in SQL
+-- Purpose   : To retrieve data from a table
+-- ==========================================
+
+-- Step 1: Create Student Table
+
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50)
+);
+
+-- Step 2: Insert Sample Records
+
+INSERT INTO Student
+VALUES (1, 'Jay', 20, 'Computer');
+
+INSERT INTO Student
+VALUES (2, 'Rahul', 21, 'IT');
+
+INSERT INTO Student
+VALUES (3, 'Priya', 19, 'Computer');
+
+-- Step 3: Display All Records
+
+SELECT * FROM Student;
+
+-- Step 4: Display Specific Columns
+
+SELECT Name, Department
+FROM Student;
+
+-- Expected Output (SELECT *)
+
+/*
++-----------+--------+-----+------------+
+| StudentID | Name   | Age | Department |
++-----------+--------+-----+------------+
+| 1         | Jay    | 20  | Computer   |
+| 2         | Rahul  | 21  | IT         |
+| 3         | Priya  | 19  | Computer   |
++-----------+--------+-----+------------+
+*/
+
+-- Expected Output (SELECT Name, Department)
+
+/*
++--------+------------+
+| Name   | Department |
++--------+------------+
+| Jay    | Computer   |
+| Rahul  | IT         |
+| Priya  | Computer   |
++--------+------------+
+*/
+
+
+-- ==========================================
+-- File Name : Where.sql
+-- Topic     : WHERE Clause in SQL
+-- Purpose   : To filter records based on a condition
+-- ==========================================
+
+-- Step 1: Create Student Table
+
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50)
+);
+
+-- Step 2: Insert Sample Records
+
+INSERT INTO Student
+VALUES (1, 'Jay', 20, 'Computer');
+
+INSERT INTO Student
+VALUES (2, 'Rahul', 21, 'IT');
+
+INSERT INTO Student
+VALUES (3, 'Priya', 19, 'Computer');
+
+INSERT INTO Student
+VALUES (4, 'Sneha', 22, 'Mechanical');
+
+-- Step 3: Display All Records
+
+SELECT * FROM Student;
+
+-- Step 4: Retrieve Students with Age Greater Than 20
+
+SELECT *
+FROM Student
+WHERE Age > 20;
+
+-- Step 5: Retrieve Students from Computer Department
+
+SELECT *
+FROM Student
+WHERE Department = 'Computer';
+
+-- Expected Output (Age > 20)
+
+/*
++-----------+--------+-----+------------+
+| StudentID | Name   | Age | Department |
++-----------+--------+-----+------------+
+| 2         | Rahul  | 21  | IT         |
+| 4         | Sneha  | 22  | Mechanical |
++-----------+--------+-----+------------+
+*/
+
+-- Expected Output (Department = 'Computer')
+
+/*
++-----------+-------+-----+------------+
+| StudentID | Name  | Age | Department |
++-----------+-------+-----+------------+
+| 1         | Jay   | 20  | Computer   |
+| 3         | Priya | 19  | Computer   |
++-----------+-------+-----+------------+
+*/
+
+
+
