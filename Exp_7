@@ -1,0 +1,205 @@
+-- ==========================================
+-- File Name : Except.sql
+-- Topic     : EXCEPT Operator
+-- Purpose   : Display records present in
+--             Student table but not in Teacher
+-- ==========================================
+
+-- Step 1: Create Student Table
+
+CREATE TABLE Student (
+    Name VARCHAR(50)
+);
+
+-- Step 2: Create Teacher Table
+
+CREATE TABLE Teacher (
+    Name VARCHAR(50)
+);
+
+-- Step 3: Insert Records
+
+INSERT INTO Student VALUES ('Jay');
+INSERT INTO Student VALUES ('Rahul');
+INSERT INTO Student VALUES ('Priya');
+
+INSERT INTO Teacher VALUES ('Rahul');
+INSERT INTO Teacher VALUES ('Sneha');
+
+-- Step 4: Display Student Names
+-- not present in Teacher table
+
+SELECT Name
+FROM Student
+
+EXCEPT
+
+SELECT Name
+FROM Teacher;
+
+-- Explanation:
+-- EXCEPT returns records from
+-- first table that are not present
+-- in the second table.
+
+-- Expected Output
+
+/*
++--------+
+| Name   |
++--------+
+| Jay    |
+| Priya  |
++--------+
+*/
+
+
+-- ==========================================
+-- File Name : Intersect.sql
+-- Topic     : INTERSECT Operator
+-- Purpose   : Display common records present
+--             in both Student and Teacher tables
+-- ==========================================
+
+-- Step 1: Create Student Table
+
+CREATE TABLE Student (
+    Name VARCHAR(50)
+);
+
+-- Step 2: Create Teacher Table
+
+CREATE TABLE Teacher (
+    Name VARCHAR(50)
+);
+
+-- Step 3: Insert Records
+
+INSERT INTO Student VALUES ('Jay');
+INSERT INTO Student VALUES ('Rahul');
+INSERT INTO Student VALUES ('Priya');
+
+INSERT INTO Teacher VALUES ('Rahul');
+INSERT INTO Teacher VALUES ('Priya');
+INSERT INTO Teacher VALUES ('Sneha');
+
+-- Step 4: Display Common Records
+
+SELECT Name
+FROM Student
+
+INTERSECT
+
+SELECT Name
+FROM Teacher;
+
+-- Explanation:
+-- INTERSECT returns only records
+-- that exist in both tables.
+
+-- Expected Output
+
+/*
++--------+
+| Name   |
++--------+
+| Rahul  |
+| Priya  |
++--------+
+*/
+
+
+-- ==========================================
+-- File Name : Union.sql
+-- Topic     : UNION Operator
+-- Purpose   : Combine results and remove duplicates
+-- ==========================================
+
+CREATE TABLE ScienceStudents (
+    Name VARCHAR(50)
+);
+
+CREATE TABLE CommerceStudents (
+    Name VARCHAR(50)
+);
+
+INSERT INTO ScienceStudents VALUES ('Jay');
+INSERT INTO ScienceStudents VALUES ('Rahul');
+
+INSERT INTO CommerceStudents VALUES ('Rahul');
+INSERT INTO CommerceStudents VALUES ('Priya');
+
+SELECT Name FROM ScienceStudents
+UNION
+SELECT Name FROM CommerceStudents;
+
+-- Expected Output
+
+/*
++--------+
+| Name   |
++--------+
+| Jay    |
+| Rahul  |
+| Priya  |
++--------+
+*/
+
+
+-- ==========================================
+-- File Name : Union_All.sql
+-- Topic     : UNION ALL Operator
+-- Purpose   : Combine results from two tables
+--             including duplicate records
+-- ==========================================
+
+-- Step 1: Create First Table
+
+CREATE TABLE ScienceStudents (
+    StudentName VARCHAR(50)
+);
+
+-- Step 2: Create Second Table
+
+CREATE TABLE CommerceStudents (
+    StudentName VARCHAR(50)
+);
+
+-- Step 3: Insert Records
+
+INSERT INTO ScienceStudents VALUES ('Jay');
+INSERT INTO ScienceStudents VALUES ('Rahul');
+INSERT INTO ScienceStudents VALUES ('Priya');
+
+INSERT INTO CommerceStudents VALUES ('Rahul');
+INSERT INTO CommerceStudents VALUES ('Amit');
+INSERT INTO CommerceStudents VALUES ('Sneha');
+
+-- Step 4: Apply UNION ALL
+
+SELECT StudentName
+FROM ScienceStudents
+
+UNION ALL
+
+SELECT StudentName
+FROM CommerceStudents;
+
+-- Explanation:
+-- UNION ALL combines records from both tables.
+-- Duplicate values are NOT removed.
+
+-- Expected Output
+
+/*
++-------------+
+| StudentName |
++-------------+
+| Jay         |
+| Rahul       |
+| Priya       |
+| Rahul       |
+| Amit        |
+| Sneha       |
++-------------+
+*/
