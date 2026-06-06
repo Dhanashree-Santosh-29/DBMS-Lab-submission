@@ -1,1 +1,109 @@
 
+-- Create Table
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Course VARCHAR(50)
+);
+
+-- Add a new column
+ALTER TABLE Student
+ADD Email VARCHAR(100);
+
+-- Add multiple columns
+ALTER TABLE Student
+ADD Address VARCHAR(100),
+ADD Phone VARCHAR(15);
+
+-- Modify a column
+ALTER TABLE Student
+MODIFY Name VARCHAR(100);
+
+-- Rename a column
+ALTER TABLE Student
+RENAME COLUMN Course TO Department;
+
+-- Drop a column
+ALTER TABLE Student
+DROP COLUMN Phone;
+
+-- View table structure
+DESC Student;
+-- Create Table using CHECK Constraint
+
+CREATE TABLE Employee (
+    EmpID INT PRIMARY KEY,
+    EmpName VARCHAR(50) NOT NULL,
+    Age INT CHECK (Age >= 18),
+    Salary DECIMAL(10,2) CHECK (Salary > 0),
+    Gender VARCHAR(10) CHECK (Gender IN ('Male', 'Female'))
+);
+
+-- Valid Record
+INSERT INTO Employee
+VALUES (1, 'Jay', 20, 25000, 'Male');
+
+-- Invalid Record (Age less than 18)
+INSERT INTO Employee
+VALUES (2, 'Rahul', 16, 20000, 'Male');
+
+-- Invalid Record (Salary less than 0)
+INSERT INTO Employee
+VALUES (3, 'Priya', 22, -5000, 'Female');
+
+-- Display Records
+SELECT * FROM Employee;
+
+-- Create Table
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
+);
+
+-- Display Tables
+SHOW TABLES;
+
+-- Drop Table
+DROP TABLE Student;
+
+-- Display Tables Again
+SHOW TABLES;
+
+-- Create Table
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
+);
+
+-- Display Tables
+SHOW TABLES;
+
+-- Rename Table
+ALTER TABLE Student
+RENAME TO Students;
+
+-- Display Tables Again
+SHOW TABLES;
+-- Create Table
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
+);
+
+-- Insert Records
+INSERT INTO Student VALUES (1, 'Jay', 20);
+INSERT INTO Student VALUES (2, 'Rahul', 21);
+INSERT INTO Student VALUES (3, 'Priya', 19);
+
+-- Display Records Before TRUNCATE
+SELECT * FROM Student;
+
+-- Remove All Records
+TRUNCATE TABLE Student;
+
+-- Display Records After TRUNCATE
+SELECT * FROM Student;
